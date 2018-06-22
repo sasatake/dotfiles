@@ -1,0 +1,21 @@
+# ls alias
+alias ls="ls -G"
+alias ll="ls -lG"
+alias la="ls -laG"
+
+# http://www.task-notes.com/entry/20141223/1419324649
+alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:?/} brew"
+
+alias unix='date +%s'
+alias eslint-prettier-init='yarn add eslint eslint-config-airbnb-base \
+                                    eslint-config-prettier eslint-plugin-import \
+                                    eslint-plugin-prettier prettier --dev \
+                                    && cp ~/.dotfiles/eslint/.eslintrc.js . \
+                                    && cp ~/.dotfiles/prettier/.prettierrc .'
+
+# visual studio code alias
+alias c='code ./'
+alias cdcode='cat ~/.enhancd/enhancd.log | fzf | xargs code'
+
+# awslogs cli alias
+alias alogs='awslogs groups | fzf | xargs awslogs get -w'

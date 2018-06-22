@@ -1,0 +1,7 @@
+# for zsh-completions
+fpath=(/.zplug/repos/zsh-users/zsh-completions/src/ $fpath)
+autoload -U compinit
+compinit -u
+
+# for awscli completions
+source /usr/local/share/zsh/site-functions/_aws

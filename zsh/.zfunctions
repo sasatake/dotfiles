@@ -1,0 +1,43 @@
+count() {
+    word=$1
+    echo ${#word}
+}
+
+abort(){
+    echo "$@" 1>&2
+}
+
+aroles() {
+    type aws > /dev/null 2>&1 || abort "aws-cli is required"
+    type jq  > /dev/null 2>&1 || abort "jq is required"
+    type fzf > /dev/null 2>&1 || abort "fzf is required"
+
+    role=`aws iam list-roles | jq -r ".Roles[].RoleName" | fzf`
+    echo 'selected role is '${role}
+    attached_role_policies=`aws iam list-attached-role-policies --role-name ${role}`
+    policy=`echo ${attached_role_policies} | jq -r ".AttachedPolicies[].PolicyName" | fzf`
+    echo 'selected policy is '${policy}
+    policy_arn=`echo ${attached_role_policies} | jq -r '.AttachedPolicies[] | select(.PolicyName == "'${policy}'") | .PolicyArn'`
+    policy_version=`aws iam get-policy --policy-arn ${policy_arn} | jq -r '.Policy.DefaultVersionId'`
+    aws iam get-policy-version --policy-arn ${policy_arn} --version-id ${policy_version}
+}
+
+s3_cp(){
+    echo $1
+    [ -z "$1" ] && abort "file not specified" && return
+    bucket=`aws s3 ls | awk '{ print $3 }' | fzf`
+    suffix=`aws s3 ls $bucket --recursive \
+        | sed 's#/[^/]*$##g' \
+        | awk '!colname[$4]++{print $4}' \
+        | sed "s#^#${bucket}/#g" \
+        | fzf`
+    aws s3 cp $1 s3://$suffix/
+}
+
+cloudfront_clear_cache(){
+    distributions=`aws cloudfront list-distributions`
+    alias=`echo ${distributions} | jq -r '.DistributionList.Items[].Aliases.Items[0]' | fzf`
+    distribution_id=`echo ${distributions} | jq -r '.DistributionList.Items[] | select(.Aliases.Items[0] == "'${alias}'") | .Id'`
+    aws cloudfront create-invalidation --distribution-id ${distribution_id} --paths '/*'
+    echo "distribution-id: "${distribution_id}", alias: "${alias}" is created invalidation"
+}

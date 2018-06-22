@@ -1,0 +1,37 @@
+source ~/.zplug/init.zsh
+
+# install zplug
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+# install spacehip-prompt
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+
+# install zsh-completions
+zplug "zsh-users/zsh-completions"
+
+# install zsh-syntax-highlighting
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# install fzf
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"fzf"
+
+# install enhancd
+zplug "b4b4r07/enhancd", use:init.sh
+
+# install jq
+zplug "stedolan/jq", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"jq"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load --verbose
