@@ -14,7 +14,5 @@ brew "yarn"
 brew "zsh"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "android-studio"
-cask "genymotion"
 cask "iterm2"
-cask "virtualbox"
 cask "homebrew/cask-versions/java8"
