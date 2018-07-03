@@ -1,4 +1,4 @@
-zsh/.zproxy
-zsh/.histfile
-zsh/.zcompdump
-zsh/secret/
+home/.zsh/.zproxy
+home/.zsh/.histfile
+home/.zsh/.zcompdump
+home/.zsh/secret/
