@@ -27,12 +27,12 @@ readonly GIT_PATH="${BREW_PATH_HOME}/git"
 ############ functions ################
 
 new_line(){
-  print "\n"
+  printf "\n"
 }
 
 title() {
   TITLE_STYLE="${ESC}${TEXT_MAGENTA};${TEXT_UNDER_LINE};${TEXT_BOLD}${ESCEND}"
-  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "■ $*"
+  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "◯ $*"
 }
 
 sub_title() {
