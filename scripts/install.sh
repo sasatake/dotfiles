@@ -12,6 +12,7 @@ readonly STYLE_OFF="${ESC}${ESCEND}"
 
 readonly TEXT_RED="31"
 readonly TEXT_GREEN="32"
+readonly TEXT_MAGENTA="35"
 readonly TEXT_CYAN="36"
 readonly TEXT_WHITE="37"
 readonly TEXT_BOLD="1"
@@ -25,14 +26,18 @@ readonly GIT_PATH="${BREW_PATH_HOME}/git"
 
 ############ functions ################
 
+new_line(){
+  print "\n"
+}
+
 title() {
-  TITLE_STYLE="${ESC}${TEXT_WHITE};${TEXT_UNDER_LINE}${ESCEND}"
-  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
+  TITLE_STYLE="${ESC}${TEXT_MAGENTA};${TEXT_UNDER_LINE};${TEXT_BOLD}${ESCEND}"
+  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "■ $*"
 }
 
 sub_title() {
-  SUB_TITLE_STYLE="${ESC}${TEXT_CYAN};${TEXT_UNDER_LINE}${ESCEND}"
-  printf "\n\n${SUB_TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
+  SUB_TITLE_STYLE="${ESC}${TEXT_CYAN};${TEXT_UNDER_LINE};${TEXT_BOLD}${ESCEND}"
+  printf "\n${SUB_TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
 }
 
 info(){
@@ -44,7 +49,7 @@ info(){
 clear(){
   DONE_PREFIX_STYLE="${ESC}${TEXT_GREEN}${ESCEND}"
   DONE_TEXT_STYLE="${ESC}${TEXT_BOLD}${ESCEND}"
-  printf "${SPACE}${DONE_PREFIX_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
+  printf "${DONE_PREFIX_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
 }
 
 error(){
@@ -129,6 +134,7 @@ initialize(){
   for scirpt in `ls -v $DOTFILES_HOME/scripts/init/*`;do
     source $scirpt
   done
+  new_line
   clear "finish executing initialize scripts"
 }
 
