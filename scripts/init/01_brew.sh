@@ -7,5 +7,5 @@ brew_update(){
   brew bundle --file=$BREW_FILE && clear "complete brew update"
 }
 
-title "brew update"
+sub_title "Brew Update"
 brew_is_not_installed || brew_update

@@ -13,5 +13,5 @@ set_zsh_to_login_shell(){
   clear "$($SHELL --version)"
 }
 
-title "Check Shell"
+sub_title "Check Shell"
 login_shell_is_not_brew_zsh && set_zsh_to_login_shell || clear "$($SHELL --version)"

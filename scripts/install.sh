@@ -30,6 +30,11 @@ title() {
   printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
 }
 
+sub_title() {
+  SUB_TITLE_STYLE="${ESC}${TEXT_CYAN};${TEXT_UNDER_LINE}${ESCEND}"
+  printf "\n\n${SUB_TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
+}
+
 info(){
   INFO_PREFIX_STYLE="${ESC}${TEXT_CYAN}${ESCEND}"
   INFO_TEXT_STYLE="${ESC}${TEXT_BOLD}${ESCEND}"
@@ -110,7 +115,7 @@ download(){
 }
 
 deploy(){
-  title "deploy"
+  title "Deploy"
   info "start making symbolic link..."
   for dotfile in `ls -A $DOTFILES_HOME/home/`;do
     ln -sfnv $DOTFILES_HOME/home/$dotfile $HOME/$dotfile
@@ -119,8 +124,8 @@ deploy(){
 }
 
 initialize(){
-  title "initialize"
-  info "start executing initialize scripts"
+  title "Initialize"
+  info "start executing initialize scripts..."
   for scirpt in `ls -v $DOTFILES_HOME/scripts/init/*`;do
     source $scirpt
   done
