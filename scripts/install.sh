@@ -54,16 +54,16 @@ is_mac_os(){
   [ "$(uname)" == 'Darwin' ]
 }
 
-is_not_installed_brew(){
+brew_is_not_installed(){
   [ ! -x $BREW_PATH ]
 }
 
-is_not_installed_git(){
+git_is_not_installed(){
   [ ! -x $GIT_PATH ]
 }
 
-is_cloned_dotfiles(){
-  [ -d $DOTFILES_HOME ]
+dotfiles_not_exist(){
+  [ ! -d $DOTFILES_HOME ]
 }
 
 install_brew_command(){
@@ -80,18 +80,17 @@ install_git_command(){
   clear "git is installed by brew"
 }
 
+clone_dotfiles(){
+  clear "dotfiles not exist"
+  info "start cloning dotfiles..."
+  git clone ${DOTFILES_URL} ${DOTFILES_HOME}
+  clear "finish cloning dotfiles"
+}
+
 pull_dotfiles(){
-  info "dotfiles is cloned"
   info "start pulling dotfiles..."
   git -C ${DOTFILES_HOME} pull
   clear "dotfiles is up to date"
-}
-
-clone_dotfiles(){
-  info "dotfiles not exist"
-  info "start cloning dotfiles..."
-  git clone ${DOTFILES_URL} ${DOTFILES_HOME}
-  clear "dotfiles is cloned"
 }
 
 download(){
@@ -99,13 +98,16 @@ download(){
   is_mac_os && clear "OS is Mac OS" || error "Sorry, this script is only for Mac OS"
 
   title "Check Brew Command is installed"
-  is_not_installed_brew && install_brew_command || clear "brew is already installed"
+  brew_is_not_installed && install_brew_command || clear "brew is already installed"
 
   title "Check Git Command is installed"
-  is_not_installed_git && install_git_command || clear "git is already installed by brew"
+  git_is_not_installed && install_git_command || clear "git is already installed by brew"
 
-  title "Check Dotfiles is downloaded"
-  is_cloned_dotfiles && pull_dotfiles || clone_dotfiles
+  title "Check Dotfiles exist"
+  dotfiles_not_exist && clone_dotfiles || clear "dotfiles already exist"
+
+  title "Update Dotfiles"
+  pull_dotfiles
 }
 
 deploy(){
