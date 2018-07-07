@@ -16,7 +16,6 @@ readonly TEXT_CYAN="36"
 readonly TEXT_WHITE="37"
 readonly TEXT_BOLD="1"
 readonly TEXT_UNDER_LINE="4"
-readonly TEXT_DOUBLE_UNDER_LINE="21"
 
 readonly DOTFILES_HOME="${HOME}/.dotfiles"
 readonly DOTFILES_URL="https://github.com/sasatake/dotfiles.git"
@@ -27,7 +26,7 @@ readonly GIT_PATH="${BREW_PATH_HOME}/git"
 ############ functions ################
 
 title() {
-  TITLE_STYLE="${ESC}${TEXT_WHITE};${TEXT_DOUBLE_UNDER_LINE}${ESCEND}"
+  TITLE_STYLE="${ESC}${TEXT_WHITE};${TEXT_UNDER_LINE}${ESCEND}"
   printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
 }
 
