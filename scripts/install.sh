@@ -112,7 +112,7 @@ download(){
 deploy(){
   title "deploy"
   info "start making symbolic link..."
-  for dotfile in `ls $DOTFILES_HOME/home/*`;do
+  for dotfile in `ls -A $DOTFILES_HOME/home/`;do
     ln -sfnv $DOTFILES_HOME/home/$file $HOME/$dotfile
   done
   clear "finish making symbolic link of dotfiles"
