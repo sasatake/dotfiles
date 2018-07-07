@@ -27,34 +27,26 @@ readonly GIT_PATH="${BREW_PATH_HOME}/git"
 ############ functions ################
 
 title() {
-  TITLE_STYLE="${ESC}${TEXT_WHITE};${TEXT_UNDER_LINE}${ESCEND}"
-  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n" "$*"
+  TITLE_STYLE="${ESC}${TEXT_WHITE};${TEXT_DOUBLE_UNDER_LINE}${ESCEND}"
+  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "$*"
 }
 
 info(){
   INFO_PREFIX_STYLE="${ESC}${TEXT_CYAN}${ESCEND}"
   INFO_TEXT_STYLE="${ESC}${TEXT_BOLD}${ESCEND}"
-  printf "${SPACE}${INFO_PREFIX_STYLE}info${STYLE_OFF} ${INFO_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
+  printf "${INFO_PREFIX_STYLE}info${STYLE_OFF} ${INFO_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
 }
 
 clear(){
   DONE_PREFIX_STYLE="${ESC}${TEXT_GREEN}${ESCEND}"
   DONE_TEXT_STYLE="${ESC}${TEXT_BOLD}${ESCEND}"
-  printf "${SPACE}${DONE_PREFIX_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
+  printf "\n${DONE_PREFIX_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
 }
 
 error(){
   ERROR_PREFIX_STYLE="${ESC}${TEXT_RED}${ESCEND}"
-  printf "${SPACE}${ERROR_PREFIX_STYLE}%s${STYLE_OFF}\n" "✖ $*" 1>&2
+  printf "${ERROR_PREFIX_STYLE}%s${STYLE_OFF}\n" "✖${SPACE}$*" 1>&2
   exit 1
-}
-
-new_line(){
-  printf "\n"
-}
-
-get_os(){
-  uname
 }
 
 is_mac_os(){
@@ -119,8 +111,8 @@ download(){
 deploy(){
   title "deploy"
   info "start making symbolic link..."
-  for $file in `ls $DOTFILES_HOME/home/*`;do
-    ln -sfnv $DOTFILES_HOME/home/$file $HOME/$file
+  for dotfile in `ls $DOTFILES_HOME/home/*`;do
+    ln -sfnv $DOTFILES_HOME/home/$file $HOME/$dotfile
   done
   clear "finish making symbolic link of dotfiles"
 }
@@ -128,8 +120,8 @@ deploy(){
 initialize(){
   title "initialize"
   info "start executing initialize scripts"
-  for $file in `ls -v $DOTFILES_HOME/scripts/init/*`;do
-    source $file
+  for scirpt in `ls -v $DOTFILES_HOME/scripts/init/*`;do
+    source $scirpt
   done
   clear "finish executing initialize scripts"
 }
