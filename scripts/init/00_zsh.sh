@@ -2,7 +2,7 @@
 
 readonly ZSH_PATH="${BREW_PATH_HOME}/zsh"
 
-login_shell_is_brew_zsh(){
+login_shell_is_not_brew_zsh(){
   [ -L $ZSH_PATH ] && [ $SHELL != $ZSH_PATH ]
 }
 
@@ -14,4 +14,4 @@ set_zsh_to_login_shell(){
 }
 
 title "Check Shell"
-login_shell_is_brew_zsh && clear "$($SHELL --version)" || set_zsh_to_login_shell
+login_shell_is_not_brew_zsh && set_zsh_to_login_shell || clear "$($SHELL --version)"
