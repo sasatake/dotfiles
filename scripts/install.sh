@@ -40,7 +40,7 @@ info(){
 clear(){
   DONE_PREFIX_STYLE="${ESC}${TEXT_GREEN}${ESCEND}"
   DONE_TEXT_STYLE="${ESC}${TEXT_BOLD}${ESCEND}"
-  printf "${SPACE}${DONE_OK_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
+  printf "${SPACE}${DONE_PREFIX_STYLE}✔${STYLE_OFF}${SPACE}${DONE_TEXT_STYLE}%s${STYLE_OFF}\n" "$*"
 }
 
 error(){
