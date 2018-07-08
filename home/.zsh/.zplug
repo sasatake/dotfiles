@@ -1,4 +1,16 @@
-source ~/.zplug/init.zsh
+readonly ZPLUG_URL="https://raw.githubusercontent.com/zplug/installer/master/installer.zsh"
+readonly ZPLUG_HOME="${HOME}/.zplug"
+
+install_zplug(){
+  curl -sL --proto-redir -all,https $ZPLUG_URL | zsh
+}
+
+zplug_not_installed(){
+  [ ! -d $ZPLUG_HOME ]
+}
+
+zplug_not_installed && install_zplug
+source $ZPLUG_HOME/init.zsh
 
 # install zplug
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
