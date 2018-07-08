@@ -7,10 +7,10 @@ login_shell_is_not_brew_zsh(){
 }
 
 set_zsh_to_login_shell(){
-  info "zsh to login shell.please input sudo password."
+  info "zsh to login shell.please input sudo password..."
   echo $ZSH_PATH | sudo -k tee -a /etc/shells > /dev/null
   chsh -s $ZSH_PATH
-  clear "$($SHELL --version)"
+  clear "$($ZSH_PATH --version)"
 }
 
 sub_title "Check Shell"
