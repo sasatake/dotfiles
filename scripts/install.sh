@@ -136,6 +136,7 @@ initialize(){
   done
   new_line
   clear "finish executing initialize scripts"
+  new_line
 }
 
 ############   main    ################
