@@ -144,7 +144,7 @@ initialize(){
 
 ############   main    ################
 
-case "$1" in
+case "${1:''}" in
   "update") deploy && initialize ;;
   "deploy") deploy ;;
   * ) download && deploy && initialize ;;
