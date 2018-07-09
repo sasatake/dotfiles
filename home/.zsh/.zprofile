@@ -1,4 +1,4 @@
-for secretFile in `ls ${ZDOTDIR}secret/.z*`
+for localsetting in `ls ${ZDOTDIR}/local/ | grep -v "sample$"`
 do
-    source ${ZDOTDIR}secret/${secretFile}
+    source ${ZDOTDIR}/local/${localsetting}
 done

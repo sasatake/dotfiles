@@ -11,5 +11,5 @@ zfiles=(
 
 for zfile in $zfiles
 do
-    [ -f $ZDOTDIR$zfile ] && source $ZDOTDIR$zfile
+    [ -f $ZDOTDIR/$zfile ] && source $ZDOTDIR/$zfile
 done

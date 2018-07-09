@@ -1,5 +1,5 @@
 readonly ZPLUG_URL="https://raw.githubusercontent.com/zplug/installer/master/installer.zsh"
-readonly ZPLUG_HOME="${HOME}/.zplug"
+ZPLUG_HOME="${HOME}/.zplug"
 
 install_zplug(){
   curl -sL --proto-redir -all,https $ZPLUG_URL | zsh
