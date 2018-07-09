@@ -13,6 +13,8 @@ alias eslint-prettier-init='yarn add eslint eslint-config-airbnb-base \
                                     && cp ~/.dotfiles/eslint/.eslintrc.js . \
                                     && cp ~/.dotfiles/prettier/.prettierrc .'
 
+alias dotfiles="sh ${HOME}/.dotfiles/scripts/install.sh"
+
 # visual studio code alias
 alias c='code ./'
 alias cdcode='cat ~/.enhancd/enhancd.log | fzf | xargs code'
