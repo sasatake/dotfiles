@@ -32,7 +32,7 @@ new_line(){
 
 title() {
   TITLE_STYLE="${ESC}${TEXT_MAGENTA};${TEXT_UNDER_LINE};${TEXT_BOLD}${ESCEND}"
-  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "◯ $*"
+  printf "\n\n${TITLE_STYLE}%s${STYLE_OFF}\n\n" "■ $*"
 }
 
 sub_title() {
@@ -103,24 +103,27 @@ pull_dotfiles(){
 }
 
 download(){
-  title "Check OS Type"
+  title "Download"
+  sub_title "Check OS Type"
   is_mac_os && clear "OS is Mac OS" || error "Sorry, this script is only for Mac OS"
 
-  title "Check Brew Command is installed"
+  sub_title "Check Brew Command is installed"
   brew_is_not_installed && install_brew_command || clear "brew is already installed"
 
-  title "Check Git Command is installed"
+  sub_title "Check Git Command is installed"
   git_is_not_installed && install_git_command || clear "git is already installed by brew"
 
-  title "Check Dotfiles exist"
+  sub_title "Check Dotfiles exist"
   dotfiles_not_exist && clone_dotfiles || clear "dotfiles already exist"
-
-  title "Update Dotfiles"
-  pull_dotfiles
 }
 
 deploy(){
   title "Deploy"
+
+  sub_title "Update Dotfiles"
+  pull_dotfiles
+
+  sub_title "Linking Dotfiles"
   info "start making symbolic link..."
   for dotfile in `ls -A $DOTFILES_HOME/home/`;do
     ln -sfnv $DOTFILES_HOME/home/$dotfile $HOME/$dotfile
@@ -141,4 +144,8 @@ initialize(){
 
 ############   main    ################
 
-download && deploy && initialize
+case "$1" in
+  "update") deploy && initialize ;;
+  "deploy") deploy ;;
+  * ) download && deploy && initialize ;;
+esac
