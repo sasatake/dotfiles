@@ -24,6 +24,9 @@ zplug "zsh-users/zsh-completions"
 # install zsh-syntax-highlighting
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
+# install zsh-autosuggestions
+zplug "zsh-users/zsh-autosuggestions"
+
 # install fzf
 zplug "junegunn/fzf-bin", \
     as:command, \
