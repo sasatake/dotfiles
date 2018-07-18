@@ -10,7 +10,6 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # setting for dotfiles home
 export DOTFILES_HOME="${HOME}/.dotfiles"
-
 export BREW_FILE="${DOTFILES_HOME}/etc/brew/Brewfile"
 
 # setting for pyenv
