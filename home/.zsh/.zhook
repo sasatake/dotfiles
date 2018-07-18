@@ -1,0 +1,11 @@
+auto_save_brewfile() {
+    _pre_command_list=(`history | tail -1 | awk '{print $2,$3,$4}'`)
+    _pre_command_status=$?
+
+    if [ $_pre_command_list[1] = "brew" ] && [ $_pre_command_list[2] = "install" ] && [ $_pre_command_status -eq 0 ]; then
+        brew bundle dump --file=$BREW_FILE --force
+    fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd auto_save_brewfile

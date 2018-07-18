@@ -7,6 +7,7 @@ zfiles=(
     ".zhistory"
     ".zfunctions"
     ".zalias"
+    ".zhook"
 )
 
 for zfile in $zfiles
