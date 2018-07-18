@@ -1,15 +1,11 @@
 _brew_file_path=etc/brew/Brewfile
 
-get_pre_command(){
-    (`history | tail -1 | awk '{print $2,$3,$4}'`)
-}
-
 brew_file_is_modified(){
     [ -n "`git -C $DOTFILES_HOME status --porcelain | awk '{ print $2 }' | grep $_brew_file_path`" ]
 }
 
 auto_save_brewfile() {
-    _pre_command_list=get_pre_command
+    _pre_command_list=(`history | tail -1 | awk '{print $2,$3,$4}'`)
     _pre_command_status=$?
     
     if [ $_pre_command_list[1] = "brew" ] && [ $_pre_command_list[2] = "install" ] && [ $_pre_command_status -eq 0 ]; then
