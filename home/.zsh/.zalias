@@ -17,10 +17,13 @@ alias dotfiles="sh ${HOME}/.dotfiles/scripts/install.sh"
 
 # visual studio code alias
 alias c='code ./'
-alias cdcode='cat ~/.enhancd/enhancd.log | fzf | xargs code'
+alias fcode='cat ~/.enhancd/enhancd.log | fzf | xargs code'
 
 # awslogs cli alias
 alias alogs='awslogs groups | fzf | xargs awslogs get -w'
 
 # ghq alias
 alias fg='cd "$(ghq root)/$(ghq list | fzf)" && code ./'
+
+# terraform alias
+alias tf='terraform'
