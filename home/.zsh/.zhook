@@ -21,11 +21,11 @@ sync_brew_file(){
 
 precmd_hook() {
 
-    _precmd=(`history | tail -1 | xargs | cut -d ' ' -f 2-`)
     _precmd_result=$?
-    
+    _precmd=(`history | tail -1 | xargs | cut -d ' ' -f 2-`)
+
     case $_precmd[@] in
-      "brew install"* | "brew cask install"* ) sync_brew_file $_precmd_result $precmd[${#precmd[@]}] ;;
+      "brew install"* | "brew cask install"* ) sync_brew_file $_precmd_result $_precmd[${#_precmd[@]}] ;;
       * ) : ;;
     esac
     
