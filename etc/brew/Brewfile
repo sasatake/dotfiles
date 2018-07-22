@@ -16,6 +16,7 @@ brew "watch"
 brew "yarn"
 brew "zsh"
 brew "sanemat/font/ricty", args: ["with-powerline"]
+cask "alfred"
 cask "android-studio"
 cask "genymotion"
 cask "google-chrome"
