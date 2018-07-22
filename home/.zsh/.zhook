@@ -4,20 +4,32 @@ brew_file_is_modified(){
     [ -n "`git -C $DOTFILES_HOME status --porcelain | awk '{ print $2 }' | grep $_brew_file_path`" ]
 }
 
-auto_save_brewfile() {
-    _pre_command_list=(`history | tail -1 | awk '{print $2,$3,$4}'`)
-    _pre_command_status=$?
-    
-    if [ $_pre_command_list[1] = "brew" ] && [ $_pre_command_list[2] = "install" ] && [ $_pre_command_status -eq 0 ]; then
-        git -C $DOTFILES_HOME pull
-        brew bundle dump --file=$BREW_FILE --force
-        if brew_file_is_modified; then
-            git -C $DOTFILES_HOME add $_brew_file_path
-            git -C $DOTFILES_HOME commit -m "add ${_pre_command_list[3]}"
-            git -C $DOTFILES_HOME push
-        fi
+sync_brew_file(){
+  _precmd_result=$1
+  _target=$2
+
+  if [ $_precmd_result -eq 0 ]; then
+    git -C $DOTFILES_HOME pull
+    brew bundle dump --file=$BREW_FILE --force
+    if brew_file_is_modified; then
+      git -C $DOTFILES_HOME add $_brew_file_path
+      git -C $DOTFILES_HOME commit -m "add ${_target}"
+      git -C $DOTFILES_HOME push
     fi
+  fi
+}
+
+precmd_hook() {
+
+    _precmd=(`history | tail -1 | xargs | cut -d ' ' -f 2-`)
+    _precmd_result=$?
+    
+    case $_precmd[@] in
+      "brew install"* | "brew cask install"* ) sync_brew_file $_precmd_result $precmd[${#precmd[@]}] ;;
+      * ) : ;;
+    esac
+    
 }
 
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd auto_save_brewfile
+add-zsh-hook precmd precmd_hook
