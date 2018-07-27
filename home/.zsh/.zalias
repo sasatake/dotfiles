@@ -10,8 +10,8 @@ alias unix='date +%s'
 alias eslint-prettier-init='yarn add eslint eslint-config-airbnb-base \
                                     eslint-config-prettier eslint-plugin-import \
                                     eslint-plugin-prettier prettier --dev \
-                                    && cp ~/.dotfiles/eslint/.eslintrc.js . \
-                                    && cp ~/.dotfiles/prettier/.prettierrc .'
+                                    && cp ~/.dotfiles/etc/eslint/.eslintrc.js . \
+                                    && cp ~/.dotfiles/etc/prettier/.prettierrc .'
 
 alias dotfiles="sh ${HOME}/.dotfiles/scripts/install.sh"
 
