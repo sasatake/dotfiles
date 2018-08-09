@@ -1,0 +1,37 @@
+{
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "editor.formatOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.formatting.provider": "yapf",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
+    "git.autofetch": true,
+    "sync.gist": "e8cd1e3c51e8e412b735fb2ea0630730",
+    "sync.host": "",
+    "sync.pathPrefix": "",
+    "sync.quietSync": false,
+    "sync.askGistName": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.lastUpload": "2018-07-10T13:30:21.379Z",
+    "sync.lastDownload": "",
+    "sync.forceDownload": false,
+    "files.associations": {
+        ".z*": "shellscript"
+    },
+    "workbench.editor.enablePreview": false,
+    "editor.tabSize": 2,
+    "python.linting.flake8Path": ".venv/bin/flake8",
+    "python.formatting.yapfPath": ".venv/bin/yapf",
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "python.pythonPath": ".venv/bin/python"
+}
