@@ -27,3 +27,9 @@ alias fg='cd "$(ghq root)/$(ghq list | fzf)" && code ./'
 
 # terraform alias
 alias tf='terraform'
+
+# swith proxy settings
+alias proxy_set="source ${HOME}/.zsh/local/.zproxy"
+alias proxy_unset='unset HTTP_PROXY && unset HTTPS_PROXY \
+                && unset http_proxy && unset https_proxy'
+alias proxy_info="env | grep -i proxy"
