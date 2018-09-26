@@ -28,3 +28,6 @@ eval "$(jenv init -)"
 # setting for sdkman
 export SDKMAN_DIR="/Users/d318499/.sdkman"
 [[ -s "/Users/d318499/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/d318499/.sdkman/bin/sdkman-init.sh"
+
+# setting for rbenv
+eval "$(rbenv init -)"
