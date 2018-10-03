@@ -33,5 +33,6 @@
             "source.organizeImports": true
         }
     },
-    "python.pythonPath": ".venv/bin/python"
+    "python.pythonPath": ".venv/bin/python",
+    "python.jediEnabled": false
 }
