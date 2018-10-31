@@ -21,6 +21,7 @@ brew "zsh"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "android-studio"
 cask "docker"
+cask "dotnet-sdk"
 cask "genymotion"
 cask "google-chrome"
 cask "google-japanese-ime"
