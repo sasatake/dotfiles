@@ -17,5 +17,59 @@
   {
     "key": "ctrl+alt+cmd+[IntlYen]",
     "command": "-workbench.action.splitEditor"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "cmd+r",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm"
+  },
+  {
+    "key": "shift+alt+g",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+alt+g",
+    "command": "workbench.action.terminal.findPrevious",
+    "when": "terminalFindWidgetFocused"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-workbench.action.terminal.findPrevious",
+    "when": "terminalFindWidgetFocused"
+  },
+  {
+    "key": "shift+alt+g",
+    "command": "workbench.action.terminal.findPreviousTerminalFocus",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-workbench.action.terminal.findPreviousTerminalFocus",
+    "when": "terminalFocus"
   }
 ]
