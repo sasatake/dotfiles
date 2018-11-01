@@ -71,5 +71,9 @@
     "key": "shift+cmd+g",
     "command": "-workbench.action.terminal.findPreviousTerminalFocus",
     "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+up",
+    "command": "git.push"
   }
 ]
