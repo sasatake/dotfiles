@@ -1,3 +1,4 @@
+tap "azure/functions"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -18,6 +19,7 @@ brew "tree"
 brew "watch"
 brew "yarn"
 brew "zsh"
+brew "azure/functions/azure-functions-core-tools"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "android-studio"
 cask "docker"
