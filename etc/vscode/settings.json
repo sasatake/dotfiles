@@ -25,5 +25,7 @@
   "python.jediEnabled": false,
   "breadcrumbs.enabled": true,
   "git.fetchOnPull": true,
-  "python.autoComplete.addBrackets": true
+  "python.autoComplete.addBrackets": true,
+  "csharp.format.enable": false,
+  "csharpfixformat.style.braces.onSameLine": false
 }
