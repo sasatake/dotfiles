@@ -41,3 +41,11 @@ cloudfront_clear_cache(){
     aws cloudfront create-invalidation --distribution-id ${distribution_id} --paths '/*'
     echo "distribution-id: "${distribution_id}", alias: "${alias}" is created invalidation"
 }
+
+az-account-switch(){
+    accounts=`az account list`
+    selectedAccount=`echo ${accounts} | jq -r '.[].name' | fzf`
+    selectedAccountId=`echo ${accounts} | jq -r '.[] | select(.name == "'${selectedAccount}'") | .id'`
+    az account set --subscription $selectedAccountId
+    echo "switch account ${selectedAccount}"
+}
