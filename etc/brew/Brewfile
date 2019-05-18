@@ -26,7 +26,6 @@ brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "alfred"
 cask "docker"
 cask "dotnet-sdk"
-cask "genymotion"
 cask "google-chrome"
 cask "google-cloud-sdk"
 cask "google-japanese-ime"
