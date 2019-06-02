@@ -34,3 +34,6 @@ export SDKMAN_DIR="/Users/d318499/.sdkman"
 
 # setting for rbenv
 eval "$(rbenv init -)"
+
+# setting for goenv
+eval "$(goenv init -)"
