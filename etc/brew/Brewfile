@@ -35,6 +35,7 @@ brew "azure/functions/azure-functions-core-tools"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "alfred"
 cask "android-studio"
+cask "clipy"
 cask "coteditor"
 cask "dbeaver-community"
 cask "docker"
