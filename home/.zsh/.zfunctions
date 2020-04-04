@@ -49,3 +49,12 @@ az-account-switch(){
     az account set --subscription $selectedAccountId
     echo "switch account ${selectedAccount}"
 }
+
+repo-create(){
+    [ -v $1 ] && abort "repo name is required" && return
+    echo "create ${1}"
+    ghq create sasatake/${1}
+    cd $(ghq root)/github.com/sasatake/${1}
+    hub create
+    code ./
+}
