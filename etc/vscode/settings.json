@@ -7,7 +7,6 @@
   "python.linting.pylintEnabled": false,
   "python.formatting.provider": "yapf",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.iconTheme": "vscode-icons",
   "git.autofetch": true,
   "files.associations": {
     ".z*": "shellscript"
@@ -27,5 +26,52 @@
   "git.fetchOnPull": true,
   "python.autoComplete.addBrackets": true,
   "csharp.format.enable": false,
-  "csharpfixformat.style.braces.onSameLine": false
+  "csharpfixformat.style.braces.onSameLine": false,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsnotes.defaultNotePath": "/Users/akirasatake/Documents/vsnotes",
+  "terminal.integrated.rendererType": "dom",
+  "workbench.iconTheme": "vscode-icons",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "solargraph.diagnostics": true,
+  "solargraph.bundlerPath": "vendor/bundle/ruby/2.6.0/bin/",
+  "solargraph.formatting": true,
+  "solargraph.autoformat": true,
+  "ruby.format": "rubocop",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "explorer.confirmDelete": false,
+  "azureResourceManagerTools.parameterFiles": {
+    "/Users/akirasatake/.ghq/github.com/sasatake/azure-arm-template-functions-sandbox/azuredeploy.json": "azuredeploy.parameters.json"
+  },
+  "azureFunctions.showProjectWarning": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "java.home": "/Users/akirasatake/.sdkman/candidates/java/current",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/Users/akirasatake/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+},
+"python.languageServer": "Microsoft",
+"python.defaultInterpreterPath": ".venv/bin/python",
+"python.showStartPage": false
 }
