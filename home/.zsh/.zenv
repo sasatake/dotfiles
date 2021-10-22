@@ -29,11 +29,14 @@ eval "$(jenv init -)"
 export PATH="/usr/local/share/dotnet/:$PATH"
 
 # setting for sdkman
-export SDKMAN_DIR="/Users/d318499/.sdkman"
-[[ -s "/Users/d318499/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/d318499/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # setting for rbenv
 eval "$(rbenv init -)"
 
 # setting for goenv
 eval "$(goenv init -)"
+
+# setting for cargo
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
