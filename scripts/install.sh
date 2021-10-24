@@ -23,6 +23,7 @@ readonly DOTFILES_URL="https://github.com/sasatake/dotfiles.git"
 readonly BREW_PATH_HOME="/usr/local/bin"
 readonly BREW_PATH="${BREW_PATH_HOME}/brew"
 readonly GIT_PATH="${BREW_PATH_HOME}/git"
+readonly OS_RELEASE_FILE="/etc/os-release"
 
 ############ functions ################
 
@@ -63,12 +64,17 @@ is_mac_os(){
   [ "$(uname)" == 'Darwin' ]
 }
 
+is_ubuntu(){
+  info "uname is $(uname)"
+  [ "$(uname)" == 'Linux' ] && grep 'Ubuntu' ${OS_RELEASE_FILE} > /dev/null
+}
+
 brew_is_not_installed(){
   [ ! -x $BREW_PATH ]
 }
 
 git_is_not_installed(){
-  [ ! -x $GIT_PATH ]
+  ! type git > /dev/null
 }
 
 dotfiles_not_exist(){
@@ -82,11 +88,18 @@ install_brew_command(){
   clear "brew is installed"
 }
 
-install_git_command(){
+install_git_command_by_brew(){
   info "git is not installed by brew"
   info "start installing git command..."
   brew install git
   clear "git is installed by brew"
+}
+
+install_git_command_by_apt(){
+  info "git is not installed by apt"
+  info "start installing git command..."
+  yes | sudo apt install git
+  clear "git is installed by apt"
 }
 
 clone_dotfiles(){
@@ -102,19 +115,36 @@ pull_dotfiles(){
   clear "dotfiles is up to date"
 }
 
+download_for_mac(){
+  sub_title "Check Brew Command is installed"
+  brew_is_not_installed && install_brew_command || clear "brew is already installed"
+  sub_title "Check Git Command is installed"
+  git_is_not_installed && install_git_command_by_brew || clear "git is already installed by brew"
+  sub_title "Check Dotfiles exist"
+  dotfiles_not_exist && clone_dotfiles || clear "dotfiles already exist"
+}
+
+download_for_ubuntu(){
+  sub_title "Check Git Command is installed"
+  git_is_not_installed && install_git_command_by_apt || clear "git is already installed"
+  sub_title "Check Dotfiles exist"
+  dotfiles_not_exist && clone_dotfiles || clear "dotfiles already exist"
+}
+
+############ main functions ################
+
 download(){
   title "Download"
   sub_title "Check OS Type"
-  is_mac_os && clear "OS is Mac OS" || error "Sorry, this script is only for Mac OS"
-
-  sub_title "Check Brew Command is installed"
-  brew_is_not_installed && install_brew_command || clear "brew is already installed"
-
-  sub_title "Check Git Command is installed"
-  git_is_not_installed && install_git_command || clear "git is already installed by brew"
-
-  sub_title "Check Dotfiles exist"
-  dotfiles_not_exist && clone_dotfiles || clear "dotfiles already exist"
+  if [ is_mac_os ] ; then
+    clear "OS is Mac OS"
+    download_for_mac
+  elif [ is_ubuntu ] ; then
+    clear "OS is Ubuntu OS"
+    download_for_ubuntu
+  else
+    error "Sorry, this script is not suitable this OS."
+  fi
 }
 
 deploy(){
@@ -134,7 +164,8 @@ deploy(){
 initialize(){
   title "Initialize"
   info "start executing initialize scripts..."
-  for scirpt in `ls -v $DOTFILES_HOME/scripts/init/*`;do
+  os=$(if is_mac_os; then echo 'mac'; elif is_ubuntu; echo 'ubuntu'; else echo 'ubuntu'; fi)
+  for scirpt in `ls -v $DOTFILES_HOME/scripts/init/${os}/*`;do
     source $scirpt
   done
   new_line
