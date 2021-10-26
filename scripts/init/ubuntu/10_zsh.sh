@@ -10,7 +10,7 @@ install_zsh(){
 }
 
 zsh_is_not_login_shell(){
-  [ -L $(which zsh) ] && [ $SHELL != $(which zsh) ]
+  [ $SHELL != $(which zsh) ]
 }
 
 set_zsh_to_login_shell(){
