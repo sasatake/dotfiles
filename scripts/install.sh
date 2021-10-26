@@ -136,10 +136,10 @@ download_for_ubuntu(){
 download(){
   title "Download"
   sub_title "Check OS Type"
-  if [ is_mac_os ] ; then
+  if is_mac_os ; then
     clear "OS is Mac OS"
     download_for_mac
-  elif [ is_ubuntu ] ; then
+  elif is_ubuntu ; then
     clear "OS is Ubuntu OS"
     download_for_ubuntu
   else
