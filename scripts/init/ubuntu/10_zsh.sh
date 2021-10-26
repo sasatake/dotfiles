@@ -1,7 +1,7 @@
 #!/bin/bash
 
 zsh_is_not_installed(){
-  ! type git > /dev/null
+  ! type zsh > /dev/null
 }
 
 install_zsh(){
