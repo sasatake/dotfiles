@@ -60,12 +60,10 @@ error(){
 }
 
 is_mac_os(){
-  info "uname is $(uname)"
   [ "$(uname)" == 'Darwin' ]
 }
 
 is_ubuntu(){
-  info "uname is $(uname)"
   [ "$(uname)" == 'Linux' ] && grep 'Ubuntu' ${OS_RELEASE_FILE} > /dev/null
 }
 
@@ -164,7 +162,7 @@ deploy(){
 initialize(){
   title "Initialize"
   info "start executing initialize scripts..."
-  os=$(if is_mac_os; then echo 'mac'; elif is_ubuntu; echo 'ubuntu'; else echo 'ubuntu'; fi)
+  os=$(if is_mac_os; then echo 'mac'; elif is_ubuntu; then echo 'ubuntu'; else echo 'ubuntu'; fi)
   for scirpt in `ls -v $DOTFILES_HOME/scripts/init/${os}/*`;do
     source $scirpt
   done
