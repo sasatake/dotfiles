@@ -1,7 +1,5 @@
 #!/bin/bash
 
-readonly ZSH_PATH="${BREW_PATH_HOME}/zsh"
-
 zsh_is_not_installed(){
   ! type git > /dev/null
 }
