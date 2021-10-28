@@ -13,17 +13,21 @@ export DOTFILES_HOME="${HOME}/.dotfiles"
 export BREW_FILE="${DOTFILES_HOME}/etc/brew/Brewfile"
 
 # setting for pyenv
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=${PYENV_ROOT}/bin:$PATH
-eval "$(pyenv init -)"
-export PIPENV_VENV_IN_PROJECT=true
+if type pyenv > /dev/null; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH=${PYENV_ROOT}/bin:$PATH
+  export PIPENV_VENV_IN_PROJECT=true
+  eval "$(pyenv init -)"
+fi 
 
 # setting for nodebrew
 export PATH=${HOME}/.nodebrew/current/bin:$PATH
 
 # setting for jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if type pyenv > /dev/null; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 
 # setting for dotnet
 export PATH="/usr/local/share/dotnet/:$PATH"
@@ -33,10 +37,14 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # setting for rbenv
-eval "$(rbenv init -)"
+if type rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # setting for goenv
-eval "$(goenv init -)"
+if type goenv > /dev/null; then
+  eval "$(goenv init -)"
+fi
 
 # setting for cargo
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
