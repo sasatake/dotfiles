@@ -1,6 +1,5 @@
 zfiles=(
     ".zbase"
-    ".zproxy"
     ".zplug"
     ".zenv"
     ".zcomp"
