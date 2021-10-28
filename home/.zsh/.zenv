@@ -42,7 +42,7 @@ if type rbenv > /dev/null; then
 fi
 
 # setting for goenv
-if type goenv > /dev/null; then
+if [ -d "${HOME}/.goenv" ]; then
   export GOENV_ROOT="${HOME}/.goenv"
   export PATH=${GOENV_ROOT}/bin:$PATH
   eval "$(goenv init -)"
