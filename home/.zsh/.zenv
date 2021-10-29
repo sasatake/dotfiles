@@ -50,3 +50,8 @@ fi
 
 # setting for cargo
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+# setting for tfenv
+if [ -d "${HOME}/.tfenv" ]; then
+  export PATH=${HOME}/.tfenv/bin:$PATH
+fi
