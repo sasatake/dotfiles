@@ -33,11 +33,6 @@ export PATH="/usr/local/share/dotnet/:$PATH"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# setting for rbenv
-if type rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
 # setting for goenv
 if [ -d "${HOME}/.goenv" ]; then
   export GOENV_ROOT="${HOME}/.goenv"
