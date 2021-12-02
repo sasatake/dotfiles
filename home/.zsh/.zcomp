@@ -1,7 +1,10 @@
 # for zsh-completions
 fpath=(/.zplug/repos/zsh-users/zsh-completions/src/ $fpath)
-autoload -U compinit
-compinit -u
 
-# for awscli completions
-source /usr/local/share/zsh/site-functions/_aws
+# for asdf completions
+if [[ -d $ZPLUG_REPOS/asdf-vm/asdf/completions/ ]]; then
+  fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
+autoload -Uz compinit
+compinit

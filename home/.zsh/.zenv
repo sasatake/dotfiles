@@ -51,7 +51,7 @@ fi
 # setting for cargo
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-# setting for tfenv
-if [ -d "${HOME}/.tfenv" ]; then
-  export PATH=${HOME}/.tfenv/bin:$PATH
+# setting for asdf 
+if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
+  source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
 fi
