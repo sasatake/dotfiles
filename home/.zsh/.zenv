@@ -12,14 +12,6 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export DOTFILES_HOME="${HOME}/.dotfiles"
 export BREW_FILE="${DOTFILES_HOME}/etc/brew/Brewfile"
 
-# setting for pyenv
-if [ -d "${HOME}/.pyenv" ]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH=${PYENV_ROOT}/shims:$PATH
-  export PIPENV_VENV_IN_PROJECT=true
-  eval "$(pyenv init -)"
-fi
-
 # setting for jenv
 if type jenv > /dev/null; then
   export PATH="$HOME/.jenv/bin:$PATH"
