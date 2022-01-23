@@ -21,10 +21,6 @@ fi
 # setting for dotnet
 export PATH="/usr/local/share/dotnet/:$PATH"
 
-# setting for sdkman
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # setting for goenv
 if [ -d "${HOME}/.goenv" ]; then
   export GOENV_ROOT="${HOME}/.goenv"
