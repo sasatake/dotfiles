@@ -35,3 +35,8 @@ fi
 if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
   source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
 fi
+
+# setting for asdf java
+if [[ -f $HOME/.asdf/plugins/java/set-java-home.zsh ]]; then
+  . ~/.asdf/plugins/java/set-java-home.zsh
+fi
