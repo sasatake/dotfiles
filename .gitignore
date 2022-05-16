@@ -1,4 +1,3 @@
 home/.zsh/.histfile
 home/.zsh/.zcompdump
-home/.zsh/local/.zproxy
-home/.zsh/local/.zfunctions
+home/.zsh/local/*
