@@ -35,3 +35,6 @@ alias proxy_set="source ${HOME}/.zsh/local/.zproxy"
 alias proxy_unset='unset HTTP_PROXY && unset HTTPS_PROXY \
                 && unset http_proxy && unset https_proxy'
 alias proxy_info="env | grep -i proxy"
+
+# psql alias
+alias psql="docker run --rm -it --net=host postgres:13.6-alpine psql"
