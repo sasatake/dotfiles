@@ -36,7 +36,6 @@ brew "azure/functions/azure-functions-core-tools@3"
 brew "azure/functions/azure-functions-core-tools@4"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 brew "weaveworks/tap/eksctl"
-cask "alfred"
 cask "clipy"
 cask "coteditor"
 cask "dbeaver-community"
