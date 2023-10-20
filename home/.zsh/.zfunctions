@@ -55,6 +55,6 @@ repo-create(){
     echo "create ${1}"
     ghq create sasatake/${1}
     cd $(ghq root)/github.com/sasatake/${1}
-    hub create
+    gh repo create ${1} --public
     code ./
 }
