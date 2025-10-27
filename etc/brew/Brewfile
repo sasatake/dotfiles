@@ -31,7 +31,6 @@ brew "starship"
 brew "tree"
 brew "watch"
 brew "zsh"
-brew "azure/functions/azure-functions-core-tools", link: false
 brew "azure/functions/azure-functions-core-tools@3", link: false
 brew "azure/functions/azure-functions-core-tools@4"
 brew "sanemat/font/ricty", args: ["with-powerline"]
