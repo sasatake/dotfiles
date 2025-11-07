@@ -1,4 +1,5 @@
 brew "mise"
+brew "sheldon"
 brew "starship"
 brew "zsh"
 vscode "4ops.terraform"
