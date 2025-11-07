@@ -1,4 +1,6 @@
+brew "mise"
 brew "starship"
+brew "zsh"
 vscode "4ops.terraform"
 vscode "dbaeumer.vscode-eslint"
 vscode "eamodio.gitlens"
