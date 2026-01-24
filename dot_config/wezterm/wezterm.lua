@@ -7,5 +7,8 @@ config.automatically_reload_config = true
 config.color_scheme = 'Tokyo Night'
 config.font = wezterm.font 'JetBrains Mono'
 config.font_size = 13.0
+config.window_background_opacity = 0.75
+config.macos_window_background_blur = 20
+
 
 return config
