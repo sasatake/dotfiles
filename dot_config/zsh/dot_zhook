@@ -1,0 +1,38 @@
+_brew_file_path=etc/brew/Brewfile
+
+brew_file_is_modified(){
+    [ -n "`git -C $DOTFILES_HOME status --porcelain | awk '{ print $2 }' | grep $_brew_file_path`" ]
+}
+
+sync_brew_file(){
+  _precmd_result=$1
+  _commit_message=$2
+
+  if [ $_precmd_result -eq 0 ]; then
+    git -C $DOTFILES_HOME pull
+    brew bundle dump --file=$BREW_FILE --force
+    if brew_file_is_modified; then
+      git -C $DOTFILES_HOME add $_brew_file_path
+      git -C $DOTFILES_HOME commit -m ${_commit_message}
+      git -C $DOTFILES_HOME push
+    fi
+  fi
+}
+
+precmd_hook() {
+
+    _precmd_result=$?
+    _precmd=(`history | tail -1 | xargs | cut -d ' ' -f 2-`)
+
+    case $_precmd[@] in
+      "brew install"* | "brew cask install"* )
+        sync_brew_file $_precmd_result "add $_precmd[${#_precmd[@]}]" ;;
+      "brew uninstall"* | "brew cask uninstall"* )
+        sync_brew_file $_precmd_result "remove $_precmd[${#_precmd[@]}]" ;;
+      * ) : ;;
+    esac
+    
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd_hook

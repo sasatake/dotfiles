@@ -1,0 +1,11 @@
+: 1769213524:0;pwd
+: 1769213527:0;cd
+: 1769213541:0;la
+: 1769213886:0;type lsd
+: 1769213892:0;mise list
+: 1769213967:0;type sheldon
+: 1769214371:0;chezmoi init
+: 1769214545:0;chezmoi --help
+: 1769214610:0;chezmoi cat
+: 1769214664:0;chezmoi add ~/.config/wezterm
+: 1769214672:0;chezmoi add ~/.config/zsh
