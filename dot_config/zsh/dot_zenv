@@ -9,7 +9,7 @@ export ENHANCD_FILTER=fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # setting for dotfiles home
-export DOTFILES_HOME="${HOME}/.config/"
+export DOTFILES_HOME="${HOME}/.config"
 export BREW_FILE="${DOTFILES_HOME}/brew/Brewfile"
 
 # setting for brew
