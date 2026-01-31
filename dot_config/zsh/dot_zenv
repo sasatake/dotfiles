@@ -9,20 +9,11 @@ export ENHANCD_FILTER=fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # setting for dotfiles home
-export DOTFILES_HOME="${HOME}/.dotfiles"
-export BREW_FILE="${DOTFILES_HOME}/etc/brew/Brewfile"
+export DOTFILES_HOME="${HOME}/.config/"
+export BREW_FILE="${DOTFILES_HOME}/brew/Brewfile"
 
 # setting for brew
 export PATH="/opt/homebrew/bin:$PATH"
-
-# setting for jenv
-if type jenv > /dev/null; then
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init -)"
-fi
-
-# setting for dotnet
-export PATH="/usr/local/share/dotnet/:$PATH"
 
 # setting for cargo
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
