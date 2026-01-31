@@ -10,5 +10,9 @@ config.font_size = 13.0
 config.window_background_opacity = 0.75
 config.macos_window_background_blur = 20
 
+config.initial_cols = 200
+config.initial_rows = 50
+config.window_close_confirmation = 'NeverPrompt'
+
 
 return config
