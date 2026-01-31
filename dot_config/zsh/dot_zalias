@@ -25,3 +25,6 @@ alias tf='terraform'
 
 # psql alias
 alias psql="docker run --rm -it --net=host postgres:13.6-alpine psql"
+
+# chezmoi alias
+alias ch="chezmoi"
