@@ -16,5 +16,17 @@ config.initial_cols = 200
 config.initial_rows = 50
 config.window_close_confirmation = 'NeverPrompt'
 
+config.keys = {
+  {
+    key = 'RightArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+}
 
 return config
