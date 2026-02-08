@@ -1,7 +1,8 @@
-_brew_file_path=etc/brew/Brewfile
+_brew_file_path=dot_config/brew/dot_Brewfile
+_chezmoi_home=$(chezmoi source-path)
 
 brew_file_is_modified(){
-    [ -n "`git -C $DOTFILES_HOME status --porcelain | awk '{ print $2 }' | grep $_brew_file_path`" ]
+    [ -n "`git -C $_chezmoi_home status --porcelain | awk '{ print $2 }' | grep $_brew_file_path`" ]
 }
 
 sync_brew_file(){
@@ -9,12 +10,13 @@ sync_brew_file(){
   _commit_message=$2
 
   if [ $_precmd_result -eq 0 ]; then
-    git -C $DOTFILES_HOME pull
+    git -C $_chezmoi_home pull
     brew bundle dump --file=$BREW_FILE --force
+    chezmoi add $BREW_FILE
     if brew_file_is_modified; then
-      git -C $DOTFILES_HOME add $_brew_file_path
-      git -C $DOTFILES_HOME commit -m ${_commit_message}
-      git -C $DOTFILES_HOME push
+      git -C $_chezmoi_home add $_brew_file_path
+      git -C $_chezmoi_home commit -m ${_commit_message}
+      git -C $_chezmoi_home push
     fi
   fi
 }
