@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local keys = require 'keys'
 local config = {}
 
 config.default_prog = { '/bin/zsh', '--login' }
@@ -16,42 +17,6 @@ config.initial_cols = 200
 config.initial_rows = 50
 config.window_close_confirmation = 'NeverPrompt'
 
-config.keys = {
-  {
-    key = 'RightArrow',
-    mods = 'CMD|SHIFT',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  },
-  {
-    key = 'DownArrow',
-    mods = 'CMD|SHIFT',
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-  },
-  {
-    key = 'LeftArrow',
-    mods = 'CMD|ALT',
-    action = wezterm.action.ActivatePaneDirection 'Left',
-  },
-  {
-    key = 'RightArrow',
-    mods = 'CMD|ALT',
-    action = wezterm.action.ActivatePaneDirection 'Right',
-  },
-  {
-    key = 'UpArrow',
-    mods = 'CMD|ALT',
-    action = wezterm.action.ActivatePaneDirection 'Up',
-  },
-  {
-    key = 'DownArrow',
-    mods = 'CMD|ALT',
-    action = wezterm.action.ActivatePaneDirection 'Down',
-  },
-  {
-    key = 'w',
-    mods = 'CMD|SHIFT',
-    action = wezterm.action.CloseCurrentPane { confirm = true },
-  },
-}
+config.keys = keys
 
 return config
